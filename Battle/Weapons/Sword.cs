@@ -6,5 +6,9 @@ namespace Battle.Weapons
 {
     public class Sword : Weapon
     {
+        public override double GetDamage()
+        {
+            return 2.0;
+        }
     }
 }

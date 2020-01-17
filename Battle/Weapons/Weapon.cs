@@ -6,5 +6,6 @@ namespace Battle.Weapons
 {
     public abstract class Weapon
     {
+        public abstract double GetDamage();
     }
 }

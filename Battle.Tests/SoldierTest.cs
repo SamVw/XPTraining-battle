@@ -43,5 +43,37 @@ namespace Battle.Tests
 
             soldier.Weapon.Should().BeOfType(typeof(BareFist));
         }
+
+        [Fact]
+        public void ChooseWeapon_ChangesWeaponToChosenWeapon()
+        {
+            var soldier = new Soldier("name");
+            var chosenWeapon = new Sword();
+            soldier.ChooseWeapon(chosenWeapon);
+
+            soldier.Weapon.Should().BeEquivalentTo(chosenWeapon);
+        }
+
+        [Fact]
+        public void Fight_GivenTwoSoldiersWithDifferentWeaponDamage_ThenReturnsSoldierWithHighestWeaponDamage()
+        {
+            var winningSoldier = new Soldier("Strong guy", new Axe());
+            var losingSoldier = new Soldier("Weak guy", new BareFist());
+
+            var winner = winningSoldier.Fight(losingSoldier);
+
+            winner.Should().BeEquivalentTo(winningSoldier.Name);
+        }
+
+        [Fact]
+        public void Fight_GivenTwoSoldiersWithSameWeaponDamage_ThenReturnsSoldierWhoFights()
+        {
+            var winningSoldier = new Soldier("Frodo", new Axe());
+            var losingSoldier = new Soldier("Samwise", new Axe());
+
+            var winner = winningSoldier.Fight(losingSoldier);
+
+            winner.Should().BeEquivalentTo(winningSoldier.Name);
+        }
     }
 }
