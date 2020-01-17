@@ -1,13 +1,20 @@
+using Battle.Weapons;
 using System;
 
 namespace Battle
 {
     public class Soldier
     {
-        public Soldier(string name)
+        public string Name { get; }
+        public Weapon Weapon { get; set; }
+
+        private bool IsBlank(string name) => string.IsNullOrEmpty(name?.Trim());
+
+        public Soldier(string name, Weapon weapon = null)
         {
             ValidateNameisNotBlank(name);
             Name = name;
+            Weapon = weapon == null ? new BareFist(): weapon;
         }
 
         private void ValidateNameisNotBlank(string name)
@@ -17,9 +24,5 @@ namespace Battle
                 throw new ArgumentException("name can not be blank");
             }
         }
-
-        private bool IsBlank(string name) => string.IsNullOrEmpty(name?.Trim());
-        
-        public string Name { get; }
     }
 }
