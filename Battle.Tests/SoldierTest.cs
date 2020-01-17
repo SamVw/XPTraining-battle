@@ -10,7 +10,7 @@ namespace Battle.Tests
         [Fact]
         public void Construction_ASoldierMustHaveAName()
         {
-            var soldier = new Soldier("name");
+            var soldier = new Soldier("name"); 
 
             soldier.Name.Should().Be("name");
         }
